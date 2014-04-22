@@ -21,6 +21,18 @@
 			#wrap {display:table;height:100%}
 		</style>
 		<![endif]-->
+		<style>
+			#extracts li {
+				margin: 5px 0;
+			}
+			span.place_name {
+				font-weight: 800;
+			}
+			#search_input {
+				margin:10px 0; 
+				width:75%;
+			}
+		</style>
 	</head>
 
 	<body class="mz">
@@ -56,6 +68,7 @@
 	    	<div id="hr-divider">
 	    		<hr>
 	    	</div>
+	    	<input id="search_input" class="text-center" placeholder="Type to filter">
 			<div id="extracts">
 				Please wait...
 			</div>
@@ -65,6 +78,7 @@
 	    </div>
 		<script src="js/jquery-2.1.0.min.js"></script>
 	  	<script src="js/bootstrap.min.js"></script>
+	  	<script src="js/jquery.fastLiveFilter.js"></script>
 	  	<script src="js/index.js"></script>
 	</body>
 </html>
