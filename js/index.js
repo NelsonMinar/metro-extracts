@@ -18,7 +18,7 @@ var contentsToList = function (contents){
             } else {
                 lists = [];
                 li.addClass(name);
-                li.append("<span class ='place_name'>" + name + "</span>");
+                li.append("<span class ='place_name'>" + name.replace(/-/g, ' ') + "</span>");
                 lists[name] = li;
             }
 
