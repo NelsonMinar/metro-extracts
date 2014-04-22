@@ -3,12 +3,13 @@ var url = "https://s3.amazonaws.com/metro-extracts.mapzen.com";
 var getReadableDate= function (date) {
     var d = new Date(date);
     var r = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-    return "Last Updated at <span class='datetime'>" + r + "<span>";
+    return "Last Updated at <span class='datetime'>" + r + "</span>";
 }
 
 var displayReadableDate = function(date) {
     $("#last_updated_at").html(getReadableDate(date));
 }
+
 var contentsToList = function (contents){
     if (contents.length > 0)
     {
@@ -33,7 +34,7 @@ var contentsToList = function (contents){
             } else {
                 lists = [];
                 li.addClass(name);
-                li.append("<span class ='place_name'>" + name.replace(/-/g, ' ') + "</span>");
+                li.append("<span class ='place_name dontsplit'>" + name.replace(/-/g, ' ') + "</span>");
                 lists[name] = li;
             }
 
@@ -60,8 +61,11 @@ $(function(){
 		dataType: "xml",
 		success: function(data) {
 			var contents = $(data).children("ListBucketResult").children("Contents");
-            $("#extracts").html(contentsToList(contents));
-            $('#search_input').fastLiveFilter('#extracts ul');
+			$("#extracts").html(contentsToList(contents));
+            $('#extracts').columnize({ columns: 2, doneFunc: function() {
+                $('#search_input').fastLiveFilter('#extracts ul');
+                } 
+            });
 		},
 		error: function(request, status, error) {
 			$("#extracts").html(request.responseText)

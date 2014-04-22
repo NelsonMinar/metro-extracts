@@ -1,0 +1,11 @@
+#extracts li {
+	margin: 5px 0;
+}
+span.place_name {
+	font-weight: 800;
+	text-transform:capitalize;
+}
+#search_input {
+	margin:10px 0; 
+	width:85%;
+}

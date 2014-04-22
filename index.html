@@ -22,16 +22,38 @@
 		</style>
 		<![endif]-->
 		<style>
+			#extracts {
+			  margin: 5% 5%;
+			}
+
 			#extracts li {
-				margin: 5px 0;
+			  margin: 5px 0;
+			  text-align: left;
 			}
+
+			#extracts a {
+			  color: #00859d;
+			  padding-right: 5px;
+			}
+
+			#extracts a:hover {
+			  color: #d6645c;
+			}
+
 			span.place_name {
-				font-weight: 800;
-				text-transform:capitalize;
+			  font-weight: 800;
+			  text-transform:capitalize;
+			  display: block;
 			}
+
 			#search_input {
-				margin:10px 0; 
-				width:55%;
+			  margin:10px 0; 
+			  width:80%;
+			}
+
+			span.datetime {
+			  font-weight: 100;
+  		      font-size: 12px;
 			}
 		</style>
 	</head>
@@ -65,12 +87,13 @@
 			</div>
 			<div id="header">
 	    		<h3>Metro Extracts</h3>
-	    	</div>
-	    	<div id="hr-divider">
-	    		<hr>
+	    		<p>List of data extracts from OpenStreetMap.</p>
 	    	</div>
 	    	<div id="last_updated_at"></div>
-	    	<input id="search_input" class="text-center" placeholder="Type to filter">
+	    	<div id="hr-divider">
+	    		<hr>
+	    		<input id="search_input" type="text" class="form-control" placeholder="Search for an extract by city/region name">
+	    	</div>
 			<div id="extracts">
 				Please wait...
 			</div>
@@ -81,6 +104,7 @@
 		<script src="js/jquery-2.1.0.min.js"></script>
 	  	<script src="js/bootstrap.min.js"></script>
 	  	<script src="js/jquery.fastLiveFilter.js"></script>
+	  	<script src="js/jquery.columnizer.js"></script>
 	  	<script src="js/index.js"></script>
 	</body>
 </html>
