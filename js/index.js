@@ -3,9 +3,12 @@ var url = "https://s3.amazonaws.com/metro-extracts.mapzen.com";
 var getReadableDate= function (date) {
     var d = new Date(date);
     var r = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-    return "<span class='datetime'>" + r + "<span>";
+    return "Last Updated at <span class='datetime'>" + r + "<span>";
 }
 
+var displayReadableDate = function(date) {
+    $("#last_updated_at").html(getReadableDate(date));
+}
 var contentsToList = function (contents){
     if (contents.length > 0)
     {
@@ -14,6 +17,10 @@ var contentsToList = function (contents){
         contents.each(function(){
             var $this = $(this);
             var key   = $this.children('key').text();
+            if (key == 'LastUpdatedAt') {
+                displayReadableDate($this.children('LastModified').text());
+                return true;
+            }
             var name  = key.substring(0,key.indexOf('.'));
             var format= key.substring(key.indexOf('.')+1);
             var exists= lists.hasOwnProperty(name);
@@ -37,8 +44,6 @@ var contentsToList = function (contents){
             a.addClass("format");
             li.append(" ");
             li.append(a);
-            li.append(" ");
-            li.append(getReadableDate(last_modified));
             if (!exists) {
                 ul.append(li);
             }
@@ -55,7 +60,7 @@ $(function(){
 		dataType: "xml",
 		success: function(data) {
 			var contents = $(data).children("ListBucketResult").children("Contents");
-			$("#extracts").html(contentsToList(contents));
+            $("#extracts").html(contentsToList(contents));
             $('#search_input').fastLiveFilter('#extracts ul');
 		},
 		error: function(request, status, error) {
