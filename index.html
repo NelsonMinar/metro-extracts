@@ -31,7 +31,7 @@
 			}
 
 			#extracts li {
-				margin: 5px 0 12px 0;
+				margin: 5px 0 20px 0;
 				text-align: left;
 			}
 
@@ -50,9 +50,12 @@
 			}
 
 			span.place_name {
-				font-weight: 800;
-				text-transform:capitalize;
+				font-weight: 100;
+				text-transform: capitalize;
 				display: block;
+				font-size: 32px;
+  				color: #494949;
+  				line-height: 1.1;
 			}
 
 			#search_input {
@@ -60,6 +63,17 @@
 				width:90%;
 				height: 44px;
 			}
+			/*#search_clear {
+			    position: absolute;
+			    right: 8%;
+			    top: -20%;
+			    bottom: 0;
+			    height: 16px;
+			    margin: auto;
+			    font-size: 14px;
+			    cursor: pointer;
+			    color: #ccc;
+			}*/
 
 		</style>
 	</head>
@@ -99,7 +113,10 @@
 	    	<div id="hr-divider">
 	    		<hr>
 	    	</div>
-			<input id="search_input" type="text" class="form-control" placeholder="Search for an extract by city/region name">
+	    	<div id="btn-group">
+				<input id="search_input" type="text" class="form-control hasclear" placeholder="Search for an extract by city/region name">
+				<!-- <span id="search_clear" class="glyphicon glyphicon-remove-circle"></span> -->
+			</div>
 			<div id="extracts">
 				Please wait...
 			</div>

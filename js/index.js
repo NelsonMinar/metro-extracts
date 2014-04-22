@@ -72,3 +72,14 @@ $(function(){
 		}
 	});
 });
+
+// $(document).ready(function(){
+//     $("#search_input").keyup(function(){
+//         $("#search_clear").toggle(Boolean($(this).val()));
+//     });
+//     $("#search_clear").toggle(Boolean($("#search_input").val()));
+//     $("#search_clear").click(function(){
+//         $("#search_input").val('').focus();
+//         $(this).hide();
+//     });
+// });
