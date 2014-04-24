@@ -6,9 +6,16 @@ var getReadableDate= function (date) {
     return "Last Updated at <span class='datetime'>" + r + "</span>";
 }
 
+var getReadableFileSize = function(bytes) {
+    var formats = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + formats[i]; 
+};
+
 var displayReadableDate = function(date) {
     $("#last_updated_at").html(getReadableDate(date));
-}
+};
 
 var contentsToList = function (contents){
     if (contents.length > 0)
@@ -18,6 +25,7 @@ var contentsToList = function (contents){
         contents.each(function(){
             var $this = $(this);
             var key   = $this.children('key').text();
+            var size  = $this.children('size').text();
             if (key == 'LastUpdatedAt') {
                 displayReadableDate($this.children('LastModified').text());
                 return true;
@@ -34,7 +42,7 @@ var contentsToList = function (contents){
             } else {
                 lists = [];
                 li.addClass(name);
-                li.append("<span class ='place_name dontsplit'>" + name.replace(/-/g, ' ') + "</span>");
+                li.append("<span class ='place_name'>" + name.replace(/-/g, ' ') + "</span>");
                 lists[name] = li;
             }
 
@@ -45,6 +53,8 @@ var contentsToList = function (contents){
             a.addClass("format");
             li.append(" ");
             li.append(a);
+            li.append(" ");
+            li.append(getReadableFileSize(size));
             if (!exists) {
                 ul.append(li);
             }
@@ -62,10 +72,7 @@ $(function(){
 		success: function(data) {
 			var contents = $(data).children("ListBucketResult").children("Contents");
 			$("#extracts").html(contentsToList(contents));
-            $('#extracts').columnize({ columns: 2, doneFunc: function() {
-                $('#search_input').fastLiveFilter('#extracts ul');
-                } 
-            });
+            $('#search_input').fastLiveFilter('#extracts ul');
 		},
 		error: function(request, status, error) {
 			$("#extracts").html(request.responseText)
