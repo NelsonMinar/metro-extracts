@@ -80,7 +80,7 @@ $(function(){
 		success: function(data) {
 			var contents = $(data).children("ListBucketResult").children("Contents");
 			$("#extracts").html(contentsToList(contents));
-            $('#search_input').fastLiveFilter('#extracts ul');
+            $('#search_input').fastLiveFilter('#extracts ul').focus();
 		},
 		error: function(request, status, error) {
 			$("#extracts").html(request.responseText)
