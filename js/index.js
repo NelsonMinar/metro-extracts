@@ -3,7 +3,7 @@ var url = "https://s3.amazonaws.com/metro-extracts.mapzen.com";
 var getReadableDate= function (date) {
     var d = new Date(date);
     var r = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-    return "Last Updated at <span class='datetime'>" + r + "</span>";
+    return "Last Updated: <span class='datetime'>" + r + "</span>";
 }
 
 var getReadableFileSize = function(bytes) {
@@ -15,7 +15,7 @@ var getReadableFileSize = function(bytes) {
 
 var displayReadableFormat = function(format) {
     var formats = ['imposm-shapefiles.zip', 'osm.bz2', 'osm.pbf', 'osm2pgsql-shapefiles.zip'];
-    var readable= ['IMPOSM', 'OSM XML', 'OSM PBF', 'OSM2PGSQL(.shp)'];
+    var readable= ['IMPOSM', 'OSM XML', 'OSM PBF', 'OSM2PGSQL'];
     return readable[formats.indexOf(format)] || undefined;
 };
 
@@ -80,17 +80,10 @@ $(function(){
 		success: function(data) {
 			var contents = $(data).children("ListBucketResult").children("Contents");
 			$("#extracts").html(contentsToList(contents));
-            $('#search_input').fastLiveFilter('#extracts ul');
+            $('#search_input').fastLiveFilter('#extracts ul').focus();
 		},
 		error: function(request, status, error) {
 			$("#extracts").html(request.responseText)
 		}
 	});
 });
-
-// <div class="btn-group btn-group-justified">
-//     <a role="button" class="btn btn-default">OSM XML</a>
-//     <a role="button" class="btn btn-default">OSM PBF</a>
-//     <a role="button" class="btn btn-default">IMPOSM</a>
-//     <a role="button" class="btn btn-default">OSM2 PGSQL(.shp)</a>
-// </div>
