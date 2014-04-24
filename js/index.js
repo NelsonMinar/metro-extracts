@@ -13,14 +13,28 @@ var getReadableFileSize = function(bytes) {
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + formats[i]; 
 };
 
+// The order matters! (for presentational purposes)
+var formats = ['osm.pbf', 'osm.bz2', 'osm2pgsql-shapefiles.zip', 'imposm-shapefiles.zip']; 
+var readable= ['OSM PBF', 'OSM XML', 'OSM2PGSQL', 'IMPOSM'];
+
 var displayReadableFormat = function(format) {
-    var formats = ['imposm-shapefiles.zip', 'osm.bz2', 'osm.pbf', 'osm2pgsql-shapefiles.zip'];
-    var readable= ['IMPOSM', 'OSM XML', 'OSM PBF', 'OSM2PGSQL'];
     return readable[formats.indexOf(format)] || undefined;
 };
 
 var displayReadableDate = function(date) {
     $("#last_updated_at").html(getReadableDate(date));
+};
+
+var sortFormatDisplay = function(d, list) {
+    var another_list =[];
+    another_list = list.sort(function (a, b) {
+        if (formats.indexOf(a.format) < formats.indexOf(b.format))
+            return -1;
+        return 1;
+    });
+    for (var i=0; i<another_list.length; i++){
+        d.append(another_list[i].tag);
+    }
 };
 
 var contentsToList = function (contents){
@@ -41,27 +55,29 @@ var contentsToList = function (contents){
             var exists= lists.hasOwnProperty(name);
             var li    = $('<li/>');
             var div   = $("<div/>");
-
+            var anchor= [];
             var last_modified = $this.children('LastModified').text();
 
             if (exists) {
                 li  = lists[name]["li"];
                 div = lists[name]["div"];
-
+                anchor=lists[name]["anchor"];
             } else {
                 lists = [];
                 li.addClass(name);
                 li.append("<h5 class ='place_name'>" + name.replace(/-/g, ' ') + "</h5>");
                 div.addClass("btn-group");
-                lists[name] = {"li":li, "div":div};
+                lists[name] = {"li":li, "div":div, "anchor": []};
             }
 
             var a     = $('<a/>',{
                 text: displayReadableFormat(format) + " (" + getReadableFileSize(size) + ")",
-                href: url + "/" + key
+                href: url + "/" + key,
+                class: "btn btn-default format"
             });
-            a.addClass("btn btn-default format");
-            div.append(a);
+            lists[name]["anchor"].push({"format":format, "tag": a});
+            sortFormatDisplay(div, lists[name]["anchor"]);
+
             if (!exists) {
                 li.append(div);
                 ul.append(li);
