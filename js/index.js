@@ -87,10 +87,3 @@ $(function(){
 		}
 	});
 });
-
-// <div class="btn-group btn-group-justified">
-//     <a role="button" class="btn btn-default">OSM XML</a>
-//     <a role="button" class="btn btn-default">OSM PBF</a>
-//     <a role="button" class="btn btn-default">IMPOSM</a>
-//     <a role="button" class="btn btn-default">OSM2 PGSQL(.shp)</a>
-// </div>
