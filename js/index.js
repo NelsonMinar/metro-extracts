@@ -14,8 +14,8 @@ var getReadableFileSize = function(bytes) {
 };
 
 var displayReadableFormat = function(format) {
-    var formats = ['imposm-shapefiles.zip', 'osm.bz2', 'osm.pbf', 'osm2pgsql-shapefiles.zip'];
-    var readable= ['IMPOSM', 'OSM XML', 'OSM PBF', 'OSM2PGSQL(.shp)'];
+    var formats = ['osm.bz2', 'osm.pbf', 'osm2pgsql-shapefiles.zip', 'imposm-shapefiles.zip'];
+    var readable= ['OSM XML(.bz2)', 'OSM BINARY(.pbf)', 'OSM2PGSQL SHAPEFILES(.zip)', 'IMPOSM SHAPEFILES(.zip)'];
     return readable[formats.indexOf(format)] || undefined;
 };
 
