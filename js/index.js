@@ -3,7 +3,7 @@ var url = "https://s3.amazonaws.com/metro-extracts.mapzen.com";
 var getReadableDate= function (date) {
     var d = new Date(date);
     var r = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-    return "Last Updated at <span class='datetime'>" + r + "</span>";
+    return "Last Updated: <span class='datetime'>" + r + "</span>";
 }
 
 var getReadableFileSize = function(bytes) {
