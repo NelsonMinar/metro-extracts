@@ -13,6 +13,12 @@ var getReadableFileSize = function(bytes) {
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + formats[i]; 
 };
 
+var displayReadableFormat = function(format) {
+    var formats = ['imposm-shapefiles.zip', 'osm.bz2', 'osm.pbf', 'osm2pgsql-shapefiles.zip'];
+    var readable= ['IMPOSM', 'OSM XML', 'OSM PBF', 'OSM2PGSQL(.shp)'];
+    return readable[formats.indexOf(format)] || undefined;
+};
+
 var displayReadableDate = function(date) {
     $("#last_updated_at").html(getReadableDate(date));
 };
@@ -34,28 +40,30 @@ var contentsToList = function (contents){
             var format= key.substring(key.indexOf('.')+1);
             var exists= lists.hasOwnProperty(name);
             var li    = $('<li/>');
+            var div   = $("<div/>");
 
             var last_modified = $this.children('LastModified').text();
 
             if (exists) {
-                li = lists[name];
+                li  = lists[name]["li"];
+                div = lists[name]["div"];
+
             } else {
                 lists = [];
                 li.addClass(name);
-                li.append("<span class ='place_name'>" + name.replace(/-/g, ' ') + "</span>");
-                lists[name] = li;
+                li.append("<h5 class ='place_name'>" + name.replace(/-/g, ' ') + "</h5>");
+                div.addClass("btn-group");
+                lists[name] = {"li":li, "div":div};
             }
 
             var a     = $('<a/>',{
-                text: format,
+                text: displayReadableFormat(format) + " (" + getReadableFileSize(size) + ")",
                 href: url + "/" + key
             });
-            a.addClass("format");
-            li.append(" ");
-            li.append(a);
-            li.append(" ");
-            li.append(getReadableFileSize(size));
+            a.addClass("btn btn-default format");
+            div.append(a);
             if (!exists) {
+                li.append(div);
                 ul.append(li);
             }
         });
@@ -80,13 +88,9 @@ $(function(){
 	});
 });
 
-// $(document).ready(function(){
-//     $("#search_input").keyup(function(){
-//         $("#search_clear").toggle(Boolean($(this).val()));
-//     });
-//     $("#search_clear").toggle(Boolean($("#search_input").val()));
-//     $("#search_clear").click(function(){
-//         $("#search_input").val('').focus();
-//         $(this).hide();
-//     });
-// });
+// <div class="btn-group btn-group-justified">
+//     <a role="button" class="btn btn-default">OSM XML</a>
+//     <a role="button" class="btn btn-default">OSM PBF</a>
+//     <a role="button" class="btn btn-default">IMPOSM</a>
+//     <a role="button" class="btn btn-default">OSM2 PGSQL(.shp)</a>
+// </div>

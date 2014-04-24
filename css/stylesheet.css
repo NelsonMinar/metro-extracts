@@ -1,11 +1,41 @@
+/*Metro Extracts*/
+.margin-centerish, #extracts.margin-centerish {
+  margin: 0 15%;
+}
+
 #extracts li {
-	margin: 5px 0;
+  margin: 5px 0 20px 0;
+  text-align: left;
+  list-style-type: none;
 }
-span.place_name {
-	font-weight: 800;
-	text-transform:capitalize;
+
+#extracts a {
+  color: #00859d;
+  background:transparent;
+  width:207px;
 }
+
+#extracts a:hover {
+  color: #d6645c;
+}
+
+#last_updated_at {
+  color: #d6645c;
+  margin-top: -5px;
+}
+
+h5.place_name {
+  font-family: 'Playfair Display', Georgia, 'serif';
+  font-weight: 400;
+  text-transform: capitalize;
+  display: block;
+  font-size: 32px;
+  color: #494949;
+  line-height: 1.1;
+}
+
 #search_input {
-	margin:10px 0; 
-	width:85%;
+  width: 826px;
+  height: 44px;
+  margin: 25px auto;
 }
