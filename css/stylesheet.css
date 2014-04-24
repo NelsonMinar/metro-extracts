@@ -1,16 +1,16 @@
 /*Metro Extracts*/
-.margin-centerish, #extracts.margin-centerish {
-  margin: 0 15%;
+.margin-centerish {
+  margin: 0 6%;
 }
 
 #extracts li {
-  margin: 5px 0 20px 0;
+  margin: 5px 0 20px 40px;
   text-align: left;
   list-style-type: none;
 }
 
 #extracts a {
-  color: #00859d;
+  color: #267D7F;
   background:transparent;
   width:207px;
 }
