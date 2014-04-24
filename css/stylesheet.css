@@ -1,10 +1,10 @@
 /*Metro Extracts*/
-.margin-centerish {
-  margin: 0 6%;
+.centerish {
+  margin-left: 20px;
 }
 
 #extracts li {
-  margin: 5px 0 20px 0;
+  margin: 5px 0 20px 30px;
   text-align: left;
   list-style-type: none;
 }
@@ -12,7 +12,7 @@
 #extracts a {
   color: #267D7F;
   background:transparent;
-  width:207px;
+  width:206px;
 }
 
 #extracts a:hover {
@@ -35,7 +35,7 @@ h5.place_name {
 }
 
 #search_input {
-  width: 826px;
+  width: 860px;
   height: 44px;
   margin: 25px auto;
 }
