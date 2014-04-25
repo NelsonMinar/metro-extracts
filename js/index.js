@@ -15,7 +15,7 @@ var getReadableFileSize = function(bytes) {
 
 // The order matters! (for presentational purposes)
 var formats = ['osm.pbf', 'osm.bz2', 'osm2pgsql-shapefiles.zip', 'imposm-shapefiles.zip']; 
-var readable= ['OSM PBF', 'OSM XML', 'OSM2PGSQL', 'IMPOSM'];
+var readable= ['OSM PBF', 'OSM XML', 'Shapefiles', 'IMPOSM'];
 
 var displayReadableFormat = function(format) {
     return readable[formats.indexOf(format)] || undefined;
