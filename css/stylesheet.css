@@ -1,8 +1,4 @@
 /*Metro Extracts*/
-.centerish {
-  margin-left: 20px;
-}
-
 #extracts {
   width: 872px;
   margin: 25px auto;
@@ -40,7 +36,33 @@ h5.place_name {
 }
 
 #search_input {
-  width: 860px;
+  width: 90%;
   height: 44px;
-  margin: 25px auto;
+  margin: 0 5%;
+}
+
+@media (max-width: 767px) {
+  #search_input {
+  width: 90%;
+  margin: 0 5%;
+  }
+
+  #extracts {
+  width: 650px;
+  }
+
+  #extracts a {
+  margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  #search_input {
+  width: 90%;
+  margin: 0 5%;
+  }
+
+  #extracts {
+  width: 400px;
+  }
 }
