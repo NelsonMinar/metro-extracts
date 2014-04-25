@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Mapzen - Metro Extracts</title>
+		<title>Mapzen - Weekly OSM Metro Extracts</title>
 		<meta name="description" content="Metro extracts">
 		<meta name="author" content="Mapzen">
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
@@ -35,27 +35,27 @@
 						    <span class="icon-bar"></span>
 						    <span class="icon-bar"></span>
 						  </button>
-						  <a class="navbar-brand" href="http://www.mapzen.com/index.html"><img src="http://www.mapzen.com/assets/mapzen_logo_type_h@2x.png" alt="Mapzen" /></a>
+						  <a class="navbar-brand" href="http://www.mapzen.com"><img src="http://www.mapzen.com/assets/mapzen_logo_type_h@2x.png" alt="Mapzen" /></a>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						  <ul class="nav navbar-nav navbar-right">
-						    <li><a href="http://www.mapzen.com/index.html">Home</a></li>
-						    <!-- <li><a href="http://www.mapzen.com/developer.html">Developers</a></li> -->
+						    <li><a href="http://www.mapzen.com">Home</a></li>
 						    <li class="active"><a href="#">Metro Extracts</a></li>
 						    <li><a href="http://www.twitter.com/mapzen" target="_blank">Twitter</a></li>
 						    <li><a href="http://www.github.com/mapzen" target="_blank">Github</a></li>
-						    <!-- <li><a href="http://www.twitter.com/mapzen" target="_blank"><img src="assets/twitter_grey.png" alt="Twitter" /></a></li>
-						    <li><a href="http://www.github.com/mapzen" target="_blank"><img src="assets/github_grey.png" alt="Github" /></a></li> -->
 						  </ul>
 						</div>
 					</div>
 				</nav>
 			</div>
-			<div id="header">
 
-	    		<h2>Metro Extracts</h2>
-	    		<p>A collection of weekly snapshots of major cities and the surrounding metropolitan area from the <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> database.</p>
-	    	</div>
+      <div id="header">
+	    <h2>Weekly OSM Metro Extracts</h2>
+      <p>City-sized parts of the <a href="http://openstreetmap.org">OpenStreetMap</a> database, served up weekly. The goal is to make it easier to get started with manageable, relevant, and local data so we can all build cool stuff.</p>
+      <p>This is derived from the work of <a href="http://mike.teczno.com">Michal Migurski</a>, but rebuilt as a <a href="https://github.com/mapzen/chef-metroextractor">chef cookbook</a> for automated weekly updates.</p>
+      <p>Add a new city by submitting a pull request <a href="https://github.com/mapzen/chef-metroextractor/tree/master/templates/default">after editing these</a>, or just <a href="https://github.com/mapzen/chef-metroextractor/issues">open an issue</a>.</p>
+      </div>
+
 	    	<div id="last_updated_at"></div>
 	    	<div id="hr-divider">
 	    		<hr>
@@ -74,5 +74,6 @@
 		<script src="js/jquery-2.1.0.min.js"></script>
 	  	<script src="js/jquery.fastLiveFilter.js"></script>
 	  	<script src="js/index.js"></script>
+	  	<script src="http://www.mapzen.com/scripts.js"></script>
 	</body>
 </html>
