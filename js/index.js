@@ -73,7 +73,9 @@ var contentsToList = function (contents){
             var a     = $('<a/>',{
                 text: displayReadableFormat(format) + " (" + getReadableFileSize(size) + ")",
                 href: url + "/" + key,
-                class: "btn btn-default format"
+                class: "btn btn-default format metro-format",
+                'data-name': name.replace(/-/g, ' '),
+                'data-format': displayReadableFormat(format)
             });
             lists[name]["anchor"].push({"format":format, "tag": a});
             sortFormatDisplay(div, lists[name]["anchor"]);
@@ -102,4 +104,12 @@ $(function(){
 			$("#extracts").html(request.responseText)
 		}
 	});
+
+    $('body').on('click', 'a.metro-format', function() {
+      var $this = $(this);
+      var name  = $this.data("name");
+      var format= $this.data("format");
+      ga('send', 'event', name, 'click', format);
+    });
+
 });
