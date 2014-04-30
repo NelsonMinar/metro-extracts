@@ -46,6 +46,9 @@ var contentsToList = function (contents){
             var $this = $(this);
             var key   = $this.children('key').text();
             var size  = $this.children('size').text();
+            if (key == 'cities.json') {
+              return true;
+            }
             if (key == 'LastUpdatedAt') {
                 displayReadableDate($this.children('LastModified').text());
                 return true;
