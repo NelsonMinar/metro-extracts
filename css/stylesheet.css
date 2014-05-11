@@ -44,18 +44,25 @@ h5.place_name {
 
 #bbMap
 {
-    width: 90%;
-    height: 400px;
-    margin: 1em 5%;
-    background-color: #CCE9FE;
+  width: 90%;
+  height: 400px;
+  margin: 1em 5%;
+  background-color: #CCE9FE;
 }
 
 .leaflet-popup-content-wrapper {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'Playfair Display', Georgia, 'serif';
+  font-weight: 400;
+  text-transform: capitalize;
+  display: block;
+  font-size: 18px;
+  color: #494949;
+  line-height: 1.1;
 }
 .leaflet-popup-content-wrapper a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 @media (max-width: 767px) {
