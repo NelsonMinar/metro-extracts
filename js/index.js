@@ -10,11 +10,11 @@ var getReadableFileSize = function(bytes) {
     var formats = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     if (bytes == 0) return 'n/a';
     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + formats[i]; 
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + formats[i];
 };
 
 // The order matters! (for presentational purposes)
-var formats = ['osm.pbf', 'osm.bz2', 'osm2pgsql-shapefiles.zip', 'imposm-shapefiles.zip']; 
+var formats = ['osm.pbf', 'osm.bz2', 'osm2pgsql-shapefiles.zip', 'imposm-shapefiles.zip'];
 var readable= ['OSM PBF', 'OSM XML', 'OSM2PGSQL SHP', 'IMPOSM SHP'];
 
 var displayReadableFormat = function(format) {
