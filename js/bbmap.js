@@ -4,7 +4,10 @@ var bboxUrl = 'http://www.corsproxy.com/s3.amazonaws.com/metro-extracts.mapzen.c
 
 // A Leaflet map to draw bounding boxes of the extracted metros.
 
+/* Global variable holding the Leaflet map */
 var map;
+
+/* Construct the base Leaflet map */
 function makeBbMap()
 {
     // Create the leaflet base map
@@ -19,10 +22,22 @@ function makeBbMap()
     basemap.addTo(map);
 };
 
+/* Event function generator to scroll to the given city */
+function scrollToCity(cityName) {
+    var t = cityName;
+    return function() {
+        var cityElement = $("li." + t);
+        $('html, body').animate({
+            scrollTop: (cityElement.offset().top - 50)
+        }, 300);
+    };
+}
+
+/* Add bounding boxes to the map for the cities in the loaded data. */
 function addBoundingBoxes(data) {
     for (var regionName in data.regions) {
         var region = data.regions[regionName];
-        // Render a box for each city, create the popup
+
         for (var cityName in region.cities) {
             var city = region.cities[cityName],
                 bounds = city.bbox;
@@ -31,22 +46,19 @@ function addBoundingBoxes(data) {
                                      [+bounds.bottom, +bounds.right], [+bounds.bottom, +bounds.left]],
                                     { weight: 1.5, color: "#000",
                                      fillColor: "#82c", fillOpacity: 0.5 });
-            /* var popupData = [
-                '<b><a href="#' + city.slug + '">' + city.name + '</a></b><br>',
-                city.area + '<br>',
-                city.osm_size + " bzip’ed XML OSM data<br>",
-                city.pbf_size + " binary PBF OSM data<br>",
-                '<p>',
-                '<a href="#' + city.slug + '"><img src="previews/' + city.slug + '.jpg" width="155" height="100"></a>',
-            ];  */
 
-            polygon.bindPopup(cityName.replace(/-/g, ' '));
+            polygon.on('click', scrollToCity(cityName));
             polygon.addTo(map);
         }
     }
 }
 
+/* Main script */
+
+// Make the map area
 makeBbMap();
+
+// Load the metro data file and add the bounding boxes
 $(function(){
     $.ajax({
         url: bboxUrl,
