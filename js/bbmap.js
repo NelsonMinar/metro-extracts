@@ -1,4 +1,4 @@
-// A Leaflet map to draw bounding boxes of the metros in Extractotron
+// A Leaflet map to draw bounding boxes of the extracted metros.
 
 function makeBbMap()
 {
@@ -12,7 +12,7 @@ function makeBbMap()
             noWrap: false,
     });
     basemap.addTo(map);
-
+/*
     // Render a box for each city, create the popup
     for (var i = 0; i < cities.length; i++)
     {
@@ -34,4 +34,6 @@ function makeBbMap()
         polygon.bindPopup(popupData.join(''));
         polygon.addTo(map);
     }
+*/
 };
+makeBbMap();

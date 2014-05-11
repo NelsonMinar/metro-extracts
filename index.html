@@ -14,6 +14,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 		<link rel="shortcut icon" href="http://www.mapzen.com/assets/favicon.ico" type="image/x-icon" />
 		<!--[if !IE 7]>
 		<style type="text/css">
@@ -64,6 +65,7 @@
 				<input id="search_input" type="text" class="form-control hasclear" placeholder="Search for an extract by city/region name">
 				<!-- <span id="search_clear" class="glyphicon glyphicon-remove-circle"></span> -->
 			</div>
+			<div id="bbMap"></div>
 			<div id="extracts" class="centerish">
 				Please wait...
 			</div>
@@ -75,5 +77,7 @@
 	  	<script src="js/jquery.fastLiveFilter.js"></script>
 	  	<script src="http://www.mapzen.com/scripts.js"></script>
 	  	<script src="js/index.js"></script>
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+		<script src="js/bbmap.js"></script>
 	</body>
 </html>
