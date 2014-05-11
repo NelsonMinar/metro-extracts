@@ -1,6 +1,6 @@
 // The URL containing bounding boxes.
 // TODO: remove corsproxy when S3 headers are set correctly
-var bboxUrl = 'http://www.corsproxy.com/s3.amazonaws.com/metro-extracts.mapzen.com/cities.json';
+var bboxUrl = 'https://s3.amazonaws.com/metro-extracts.mapzen.com/cities.json';
 
 // A Leaflet map to draw bounding boxes of the extracted metros.
 
