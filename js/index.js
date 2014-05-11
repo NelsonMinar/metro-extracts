@@ -1,9 +1,10 @@
 var url = "https://s3.amazonaws.com/metro-extracts.mapzen.com";
 
 var getReadableDate= function (date) {
+    var zeroPad = function(n) { return n < 10 ? ("0" + n) : ("" + n); }
     var d = new Date(date);
-    var r = (1+d.getMonth()) + "/" + d.getDate() + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-    return "Last Updated: <span class='datetime'>" + r + "</span>";
+    var r = d.getFullYear() + "-" + zeroPad(1+d.getMonth()) + "-" + zeroPad(d.getDate()) + " " + zeroPad(d.getHours()) + ":" + zeroPad(d.getMinutes());
+    return "Extract last updated <span class='datetime'>" + r + "</span>";
 }
 
 var getReadableFileSize = function(bytes) {
